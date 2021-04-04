@@ -10,3 +10,4 @@ k = skelet ID prefix
 u = user ID prefix
 b = sub-user id prefix
 d = device id prefix
+f = file id prefix

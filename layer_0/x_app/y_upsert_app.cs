@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace layer_0.x_app
 {
-    public class y_upsert_app_info : z_y<y_upsert_app_info.o>
+    public class y_upsert_app : z_y<y_upsert_app.o>
     {
-        public override string z_yid => nameof(y_upsert_app_info);
+        public override string z_yid => nameof(y_upsert_app);
         public override e_permission z_permission => e_permission.u;
         public string appid { get; set; }
         public string name { get; set; }
