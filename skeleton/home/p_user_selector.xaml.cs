@@ -15,11 +15,9 @@ using System.Windows.Shapes;
 
 namespace skeleton.home
 {
-    /// <summary>
-    /// Interaction logic for p_user_selector.xaml
-    /// </summary>
     public partial class p_user_selector : Border, page
     {
+        api api;
         public p_user_selector()
         {
             InitializeComponent();
@@ -27,11 +25,21 @@ namespace skeleton.home
         public UIElement z_ui => this;
         public void focus()
         {
-            throw new NotImplementedException();
+            lst_users.SelectedIndex = 0;
+            lst_users.UpdateLayout();
+            var listBoxItem = (ListBoxItem)lst_users
+                .ItemContainerGenerator
+                .ContainerFromItem(lst_users.SelectedItem);
+            listBoxItem.Focus();
         }
         public void start(api api)
         {
-         
+            this.api = api;
+            lst_users.PreviewKeyDown += Lst_users_PreviewKeyDown;
+        }
+        async void Lst_users_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            var dv = await api.message(z_message.e_type.info, "test", "op1", "op2");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using skeleton.home;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,15 +31,24 @@ namespace skeleton.more_controls
                 h_stack.Children.Add(new icon() { text = "صفحه" + i });
                 v_stack.Children.Add(new icon() { text = "نرم افزار" + i });
             }
+            first_show();
         }
+        async void first_show()
+        {
+            await Task.Delay(1000);
+            a.user_selector = new api(new p_user_selector());
+            show(a.user_selector);
+        }
+
         public void set(string[] apps, int app, string pages, int page)
         {
 
         }
         internal void show(api val)
         {
-            a.page = val;
-            stage.Child = (val as object) as UIElement;
+            a.api = val;
+            stage.Child = val.z_body;
+            val.z_focus();
         }
     }
 }

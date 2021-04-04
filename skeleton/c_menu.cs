@@ -9,7 +9,7 @@ namespace skeleton
 {
     class c_menu
     {
-        public async Task<m_menu> get(string userid)
+        public Task<m_menu> get(string userid)
         {
             return default;
         }

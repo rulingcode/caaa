@@ -22,11 +22,12 @@ namespace skeleton.home
     public partial class p_add_user : Border
     {
         text_box txt_phone;
-        PasswordBox txt_password;
+        PasswordBox txt_code;
         public p_add_user()
         {
             InitializeComponent();
             txt_phone = (text_box)phone.child;
+            txt_code = (PasswordBox)code.child;
         }
     }
 }

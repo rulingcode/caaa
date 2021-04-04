@@ -21,6 +21,9 @@ namespace skeleton
         public api(page page)
         {
             this.page = page;
+            z_body.Children.Add(page.z_ui);
+            z_body.Children.Add(dialog_box);
+            page.start(this);
         }
         public c_run run { get; internal set; }
         public string z_appid { get; internal set; }
@@ -32,11 +35,6 @@ namespace skeleton
                 page.focus();
             else
                 dialog.focus_();
-        }
-        public api()
-        {
-            z_body.Children.Add(page.z_ui);
-            z_body.Children.Add(dialog_box);
         }
         public async Task<T> run_dialog<T>(z_dialog z)
         {

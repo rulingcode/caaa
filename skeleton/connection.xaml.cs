@@ -30,7 +30,7 @@ namespace skeleton
         }
         public async void start()
         {
-            a.api3 = api3_factory.create<m_sync>("db_skeleton");
+            a.api3 = api3_factory.create("db_skeleton");
             a.api3.c_report = report;
             a.run_null = a.api3.c_run();
             if (connect())
@@ -79,7 +79,6 @@ namespace skeleton
         {
             n = 0;
             a.main_panel = new main_panel();
-            a.window.Content = null;
             a.window.Content = a.main_panel;
         }
         internal bool connect()

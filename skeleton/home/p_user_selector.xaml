@@ -5,8 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:skeleton.home"
              mc:Ignorable="d" 
-        BorderBrush="LightBlue"
-        BorderThickness="2"
         CornerRadius="4">
     <StackPanel>
         <TextBlock Padding="10" FlowDirection="RightToLeft">
@@ -16,9 +14,9 @@
          <Run  FontSize="16" Foreground="Brown" Text="لیست کاربران ثبت شده"/>
         </TextBlock>
         <Border CornerRadius="4" Margin="20" BorderBrush="LightBlue" BorderThickness="2">
-            <ListBox BorderThickness="0"  Margin="2" >
-                <ListBoxItem Content="09132174431"/>
-                <ListBoxItem FlowDirection="RightToLeft" Content="محسن پیرنجم الدین"/>
+            <ListBox FlowDirection="RightToLeft" x:Name="lst_users" BorderThickness="0"  Margin="2" >
+                <ListBoxItem Content="افزودن یک کاربر جدید"/>
+                <d:ListBoxItem Content="محسن پیرنجم الدین"/>
             </ListBox>
         </Border>
     </StackPanel>

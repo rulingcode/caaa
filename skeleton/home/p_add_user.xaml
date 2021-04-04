@@ -6,13 +6,14 @@
              xmlns:local="clr-namespace:skeleton.home"
              xmlns:more="clr-namespace:skeleton.more_controls"
              d:Width="300"
+             Padding="10"
              mc:Ignorable="d">
 
     <StackPanel>
         <more:label_box title="شماره تلفن همراه" x:Name="phone">
             <more:text_box />
         </more:label_box>
-        <more:label_box title="کد پیامک شده را وارد کنید.">
+        <more:label_box x:Name="code" title="کد پیامک شده را وارد کنید.">
             <PasswordBox/>
         </more:label_box>
     </StackPanel>
