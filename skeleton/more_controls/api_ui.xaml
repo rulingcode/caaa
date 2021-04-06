@@ -1,0 +1,23 @@
+﻿<Grid x:Class="skeleton.more_controls.api_ui"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:skeleton.more_controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="400">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="0"/>
+        <RowDefinition/>
+    </Grid.RowDefinitions>
+    <Border Margin="10,0,10,0" CornerRadius="3,3,0,0" Padding="10,3,10,5" BorderThickness="2,2,2,0" BorderBrush="LightBlue">
+        <TextBlock x:FieldModifier="public" x:Name="heder" FontSize="15" Text="Test"/>
+    </Border>
+    <Border Grid.Row="1" />
+    <Border CornerRadius="20,20,2,2" BorderBrush="LightBlue" BorderThickness="2,0,2,2" Grid.Row="2">
+        <Grid x:FieldModifier="public" x:Name="stage">
+
+        </Grid>
+    </Border>
+</Grid>

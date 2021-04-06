@@ -16,7 +16,7 @@ namespace skeleton
         internal static main_panel main_panel;
         internal static api3 api3;
         internal static c_run run_null;
-        internal static api api;
-        internal static api user_selector;
+        internal static api2 api;
+        internal static api2 user_selector;
     }
 }

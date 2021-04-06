@@ -9,24 +9,14 @@
              d:DesignHeight="500" d:DesignWidth="500">
     <Grid.ColumnDefinitions>
         <ColumnDefinition Width="auto"/>
+        <ColumnDefinition Width="5"/>
         <ColumnDefinition/>
     </Grid.ColumnDefinitions>
-    <Grid.RowDefinitions>
-        <RowDefinition  Height="auto"/>
-        <RowDefinition/>
-    </Grid.RowDefinitions>
 
-        <StackPanel  x:Name="h_stack"  Grid.Row="0" Margin="2" Orientation="Horizontal" Grid.Column="1">
-            <local:icon/>
-            <local:icon/>
-            <local:icon/>
-        </StackPanel>
-
-    <StackPanel x:Name="v_stack" Grid.Row="1"  Margin="2">
+    <StackPanel x:Name="v_stack" Grid.Row="1">
         <local:icon/>
         <local:icon/>
         <local:icon/>
     </StackPanel>
-
-    <Border x:Name="stage" BorderThickness="2" BorderBrush="LightBlue" Grid.Row="1" CornerRadius="3" Padding="5"  Grid.Column="1"/>
+    <Border x:Name="stage" Grid.Row="1" CornerRadius="3" d:Background="Yellow"  Grid.Column="2"/>
 </Grid>

@@ -11,7 +11,7 @@ namespace skeleton
     class c_app
     {
         internal z_app developer_app = default;
-        List<api> list = new List<api>();
+        List<api2> list = new List<api2>();
         SemaphoreSlim locker = new SemaphoreSlim(1, 1);
         async Task<z_app> get(string appid)
         {
@@ -24,29 +24,29 @@ namespace skeleton
             var dv = await get(appid);
             return dv.pages_name;
         }
-        public async Task show(string userid, string appid, string pageid)
-        {
-            await locker.WaitAsync();
-            var page = list.FirstOrDefault(i => i.userid == userid && i.z_appid == appid && i.z_name == pageid);
-            locker.Release();
-            if (page == null)
-            {
-                var app = await get(appid);
-                if (app == null)
-                    throw new Exception("kbkhgjjkrjvjgjbfjbfmdnb");
-                var type = app.get_type(pageid);
-                if (type == null)
-                    throw new Exception("kgkbhjbhfjbjgjbjfjfjbjg");
-                page = Activator.CreateInstance(type) as api;
-                page.userid = userid;
-                page.z_name = pageid;
-                page.z_appid = appid;
-                await locker.WaitAsync();
-                list.Add(page);
-                locker.Release();
-                a.main_panel.show(page);
-            }
+        //public async Task show(string userid, string appid, string pageid)
+        //{
+        //    await locker.WaitAsync();
+        //    var page = list.FirstOrDefault(i => i.userid == userid && i.z_appid == appid && i.z_name == pageid);
+        //    locker.Release();
+        //    if (page == null)
+        //    {
+        //        var app = await get(appid);
+        //        if (app == null)
+        //            throw new Exception("kbkhgjjkrjvjgjbfjbfmdnb");
+        //        var type = app.get_type(pageid);
+        //        if (type == null)
+        //            throw new Exception("kgkbhjbhfjbjgjbjfjfjbjg");
+        //        page = Activator.CreateInstance(type) as api;
+        //        page.userid = userid;
+        //        page.z_name = pageid;
+        //        page.z_appid = appid;
+        //        await locker.WaitAsync();
+        //        list.Add(page);
+        //        locker.Release();
+        //        a.main_panel.show(page);
+        //    }
 
-        }
+        //}
     }
 }

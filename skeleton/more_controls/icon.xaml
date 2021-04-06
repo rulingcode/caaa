@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:skeleton"
              mc:Ignorable="d" 
-             MinHeight="40" MinWidth="120"
+             MinHeight="40" MinWidth="180"
         Margin="1"
         HorizontalAlignment="Center"
-        BorderThickness="2" BorderBrush="LightBlue" CornerRadius="2">
+        BorderThickness="2,0,0,2" BorderBrush="LightBlue" CornerRadius="5,0,5,2">
     <TextBlock x:Name="block" Text="آیکون" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 </Border>

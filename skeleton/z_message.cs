@@ -11,19 +11,19 @@ using System.Windows.Media;
 
 namespace skeleton
 {
-    public class z_message : z<z_message.o>
+    public class z_message : page2<string>
     {
         message_box mb = new message_box() { Margin = new Thickness(20) };
-        internal override UIElement ui => mb;
         public e_type e { get; set; }
         public string title { get; set; }
         public string text { get; set; }
         public string[] option { get; set; }
         ListBox lb => mb.lb;
-        public class o
-        {
-            public string result { get; set; }
-        }
+
+        public Action<string> reply { get; set; }
+
+        public UIElement z_ui => mb;
+
         public enum e_type
         {
             info,
@@ -37,18 +37,9 @@ namespace skeleton
         private void Lb_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == System.Windows.Input.Key.Enter)
-                reply(new o() { result = lb.SelectedValue as string });
+                reply(lb.SelectedValue as string);
         }
-        protected override void implement()
-        {
-            mb.txt_message.Text = text;
-            if ((option?.Length ?? 0) == 0)
-                option = new string[] { "متوجه شدم" };
-            ObservableCollection<string> l = new ObservableCollection<string>(option);
-            lb.ItemsSource = l;
-            lb.SelectedIndex = 0;
-        }
-        protected override void focus()
+        public void focus()
         {
             lb.UpdateLayout();
             lb.SelectedIndex = 0;
@@ -58,6 +49,15 @@ namespace skeleton
                 lb.Focus();
             else
                 lbi.Focus();
+        }
+        public void start(api2 api2)
+        {
+            mb.txt_message.Text = text;
+            if ((option?.Length ?? 0) == 0)
+                option = new string[] { "متوجه شدم" };
+            ObservableCollection<string> l = new ObservableCollection<string>(option);
+            lb.ItemsSource = l;
+            lb.SelectedIndex = 0;
         }
     }
 }

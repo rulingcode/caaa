@@ -7,11 +7,14 @@ using System.Windows;
 
 namespace skeleton
 {
-    public interface page
+    public interface page2
     {
-        string title { get; }
-        void start(api api);
-        void focus();
         UIElement z_ui { get; }
+        void focus();
+        void start(api2 api2);
+    }
+    public interface page2<T> : page2
+    {
+        Action<T> reply { get; set; }
     }
 }

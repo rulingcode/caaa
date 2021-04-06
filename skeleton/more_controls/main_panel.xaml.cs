@@ -24,19 +24,15 @@ namespace skeleton.more_controls
         public main_panel()
         {
             InitializeComponent();
-            h_stack.Children.Clear();
             v_stack.Children.Clear();
-            for (int i = 0; i < 20; i++)
-            {
-                h_stack.Children.Add(new icon() { text = "صفحه" + i });
+            for (int i = 0; i < 15; i++)
                 v_stack.Children.Add(new icon() { text = "نرم افزار" + i });
-            }
             first_show();
         }
         async void first_show()
         {
             await Task.Delay(1000);
-            a.user_selector = new api(new p_user_selector());
+            a.user_selector = new api2(new p_user_selector());
             show(a.user_selector);
         }
 
@@ -44,10 +40,10 @@ namespace skeleton.more_controls
         {
 
         }
-        internal void show(api val)
+        internal void show(api2 val)
         {
             a.api = val;
-            stage.Child = val.z_body;
+            stage.Child = val.api_ui;
             val.z_focus();
         }
     }

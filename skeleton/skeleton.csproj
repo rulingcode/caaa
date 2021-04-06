@@ -7,11 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\layer_3\layer_3.csproj" />
+    <Compile Remove="api.cs" />
+    <Compile Remove="page.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="z_account\" />
+    <ProjectReference Include="..\layer_3\layer_3.csproj" />
   </ItemGroup>
 
 </Project>

@@ -15,15 +15,15 @@ using System.Windows.Shapes;
 
 namespace skeleton.home
 {
-    public partial class p_user_selector : Border, page
+    public partial class p_user_selector : Border, page2
     {
-        api api;
+        api2 api2;
         public p_user_selector()
         {
             InitializeComponent();
         }
         public UIElement z_ui => this;
-        public string titel => "لیست کاربران ثبت شده";
+        public string title => "لیست کاربران ثبت شده";
         public void focus()
         {
             lst_users.SelectedIndex = 0;
@@ -33,14 +33,15 @@ namespace skeleton.home
                 .ContainerFromItem(lst_users.SelectedItem);
             listBoxItem.Focus();
         }
-        public void start(api api)
+        public void start(api2 api2)
         {
-            this.api = api;
+            this.api2 = api2;
             lst_users.PreviewKeyDown += Lst_users_PreviewKeyDown;
         }
+
         async void Lst_users_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            var dv = await api.message(z_message.e_type.info, "test", "op1", "op2");
+            var dv = await api2.message(z_message.e_type.info, "test", "op1", "op2");
         }
     }
 }
