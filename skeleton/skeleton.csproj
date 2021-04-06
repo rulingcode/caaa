@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="api.cs" />
-    <Compile Remove="page.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\layer_3\layer_3.csproj" />
   </ItemGroup>
 

@@ -11,7 +11,7 @@ using System.Windows.Media;
 
 namespace skeleton
 {
-    public class z_message : page2<string>
+    public class z_message : page<string>
     {
         message_box mb = new message_box() { Margin = new Thickness(20) };
         public e_type e { get; set; }
@@ -50,7 +50,7 @@ namespace skeleton
             else
                 lbi.Focus();
         }
-        public void start(api2 api2)
+        public void start(api api2)
         {
             mb.txt_message.Text = text;
             if ((option?.Length ?? 0) == 0)

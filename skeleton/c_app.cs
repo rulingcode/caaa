@@ -11,7 +11,7 @@ namespace skeleton
     class c_app
     {
         internal z_app developer_app = default;
-        List<api2> list = new List<api2>();
+        List<api> list = new List<api>();
         SemaphoreSlim locker = new SemaphoreSlim(1, 1);
         async Task<z_app> get(string appid)
         {

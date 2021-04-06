@@ -19,15 +19,35 @@ namespace skeleton.home
     /// <summary>
     /// Interaction logic for p_add_user.xaml
     /// </summary>
-    public partial class p_add_user : Border
+    public partial class p_add_user : Border, page<string>
     {
         text_box txt_phone;
         PasswordBox txt_code;
+        api api;
         public p_add_user()
         {
             InitializeComponent();
             txt_phone = (text_box)phone.child;
             txt_code = (PasswordBox)code.child;
+        }
+        public Action<string> reply { get; set; }
+        public UIElement z_ui => this;
+
+        public void focus()
+        {
+            txt_phone.Focus();
+        }
+        public void start(api api2)
+        {
+            this.api = api2;
+            txt_phone.PreviewKeyDown += Txt_phone_PreviewKeyDown;
+        }
+
+        async void Txt_phone_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            var dv = await api.message(z_message.e_type.error, "test", "open", "close");
+            if (dv == "close")
+                reply(dv);
         }
     }
 }

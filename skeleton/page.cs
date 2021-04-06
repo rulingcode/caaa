@@ -9,9 +9,12 @@ namespace skeleton
 {
     public interface page
     {
-        string title { get; }
-        void start(api api);
-        void focus();
         UIElement z_ui { get; }
+        void focus();
+        void start(api api);
+    }
+    public interface page<T> : page
+    {
+        Action<T> reply { get; set; }
     }
 }

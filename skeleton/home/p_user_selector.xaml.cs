@@ -15,9 +15,9 @@ using System.Windows.Shapes;
 
 namespace skeleton.home
 {
-    public partial class p_user_selector : Border, page2
+    public partial class p_user_selector : Border, page
     {
-        api2 api2;
+        api api2;
         public p_user_selector()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace skeleton.home
                 .ContainerFromItem(lst_users.SelectedItem);
             listBoxItem.Focus();
         }
-        public void start(api2 api2)
+        public void start(api api2)
         {
             this.api2 = api2;
             lst_users.PreviewKeyDown += Lst_users_PreviewKeyDown;
@@ -41,7 +41,10 @@ namespace skeleton.home
 
         async void Lst_users_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            var dv = await api2.message(z_message.e_type.info, "test", "op1", "op2");
+            if (e.Key == Key.Enter)
+            {
+                var dv = await api2.dialog(new p_add_user(), true);
+            }
         }
     }
 }

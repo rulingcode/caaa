@@ -15,7 +15,7 @@
         <TextBlock x:FieldModifier="public" x:Name="heder" FontSize="15" Text="Test"/>
     </Border>
     <Border Grid.Row="1" />
-    <Border CornerRadius="20,20,2,2" BorderBrush="LightBlue" BorderThickness="2,0,2,2" Grid.Row="2">
+    <Border Padding="1,30,1,1" CornerRadius="30,30,2,2" BorderBrush="LightBlue" BorderThickness="2,0,2,2" Grid.Row="2">
         <Grid x:FieldModifier="public" x:Name="stage">
 
         </Grid>

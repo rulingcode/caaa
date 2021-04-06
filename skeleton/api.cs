@@ -1,9 +1,8 @@
-﻿using layer_0.cell;
-using layer_2;
+﻿using skeleton.more_controls;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,44 +12,49 @@ namespace skeleton
 {
     public class api
     {
-        z_dialog dialog = default;
-        SemaphoreSlim g_locker = new SemaphoreSlim(1, 1);
-        internal Grid z_body = new Grid();
-        Border dialog_box = new Border() { Visibility = Visibility.Collapsed, Background = new SolidColorBrush(Color.FromArgb(70, 0, 0, 0)) };
-        private readonly page page;
+        internal api_ui api_ui = new api_ui() { HorizontalAlignment = HorizontalAlignment.Left };
+        page main_page;
+        List<Border> borders = new List<Border>();
+        SolidColorBrush color = new SolidColorBrush(Color.FromArgb(70, 0, 0, 0));
         public api(page page)
         {
-            this.page = page;
-            z_body.Children.Add(page.z_ui);
-            z_body.Children.Add(dialog_box);
+            main_page = page;
+            api_ui.stage.Children.Add(page.z_ui);
             page.start(this);
         }
-        public c_run run { get; internal set; }
-        public string z_appid { get; internal set; }
-        public string userid { get; internal set; }
-        public string z_name { get; internal set; }
+        public Task<T> side<T>(page<T> page)
+        {
+            return default;
+        }
+        public async Task<T> dialog<T>(page<T> page, bool background = false)
+        {
+            TaskCompletionSource<T> rt = new TaskCompletionSource<T>();
+            page.reply = rt.SetResult;
+            if (borders.Count == 0)
+                main_page.z_ui.IsEnabled = false;
+            else
+                borders.Last().IsEnabled = false;
+            borders.Add(new Border() { Background = background ? Brushes.White : color, CornerRadius = new CornerRadius(2), DataContext = page });
+            api_ui.stage.Children.Add(borders.Last());
+            borders.Last().Child = page.z_ui;
+            page.start(this);
+            page.focus();
+            var dv = await rt.Task;
+            api_ui.stage.Children.Remove(borders.Last());
+            borders.Remove(borders.Last());
+            if (borders.Count == 0)
+                main_page.z_ui.IsEnabled = true;
+            else
+                borders.Last().IsEnabled = true;
+            z_focus();
+            return dv;
+        }
         internal void z_focus()
         {
-            if (dialog == null)
-                page.focus();
+            if (borders.Count == 0)
+                main_page.focus();
             else
-                dialog.focus_();
-        }
-        public async Task<T> run_dialog<T>(z_dialog z)
-        {
-            await g_locker.WaitAsync();
-            this.dialog = z;
-            dialog_box.Child = z.ui;
-            dialog_box.Visibility = Visibility.Visible;
-            page.z_ui.IsEnabled = false;
-            var dv = await z.get();
-            dialog = null;
-            page.z_ui.IsEnabled = true;
-            page.focus();
-            dialog_box.Visibility = Visibility.Collapsed;
-            dialog_box.Child = default;
-            g_locker.Release();
-            return (T)dv;
+                (borders.Last().DataContext as page).focus();
         }
         public async Task<string> message(z_message.e_type e, string text, params string[] options)
         {
@@ -60,8 +64,7 @@ namespace skeleton
                 option = options,
                 text = text,
             };
-            var o = await y.run(this);
-            return o.result;
+            return await dialog(y);
         }
     }
 }
