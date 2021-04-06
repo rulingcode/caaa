@@ -24,30 +24,65 @@ namespace skeleton.home
         text_box txt_phone;
         PasswordBox txt_code;
         api api;
+        e_state e;
+        enum e_state
+        {
+            set_phone,
+            set_code
+        }
         public p_add_user()
         {
             InitializeComponent();
             txt_phone = (text_box)phone.child;
             txt_code = (PasswordBox)code.child;
         }
+        void reset()
+        {
+            switch (e)
+            {
+                case e_state.set_phone:
+                    {
+                        code.Visibility = Visibility.Collapsed;
+                    }
+                    break;
+                case e_state.set_code:
+                    {
+                        code.Visibility = Visibility.Visible;
+                    }
+                    break;
+            }
+        }
         public Action<string> reply { get; set; }
-        public UIElement z_ui => this;
-
+        public FrameworkElement z_ui => this;
+        public e_size size => e_size.s2_phone;
+        public string title => "افزودن یک کاربر جدید";
         public void focus()
         {
-            txt_phone.Focus();
+            switch (e)
+            {
+                case e_state.set_phone:
+                    txt_phone.Focus();
+                    break;
+                case e_state.set_code:
+                    txt_code.Focus();
+                    break;
+            }
         }
         public void start(api api2)
         {
             this.api = api2;
+            reset();
             txt_phone.PreviewKeyDown += Txt_phone_PreviewKeyDown;
         }
 
         async void Txt_phone_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            var dv = await api.message(z_message.e_type.error, "test", "open", "close");
-            if (dv == "close")
-                reply(dv);
+            if (e.Key == Key.Enter)
+            {
+                var dv = await api.message(z_message.e_type.error, "test", "open", "close");
+                if (dv == "close")
+                    reply(dv);
+            }
         }
     }
 }

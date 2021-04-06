@@ -10,12 +10,12 @@ namespace skeleton.more_controls
 {
     public class text_block : TextBlock
     {
-        public new string Text
+        public string text
         {
-            get => base.Text;
+            get => Text;
             set
             {
-                base.Text = value;
+                Text = value;
                 FlowDirection = text_direct.get_direction(value);
             }
         }

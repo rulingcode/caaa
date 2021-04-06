@@ -13,7 +13,7 @@ namespace skeleton
 {
     public class z_message : page<string>
     {
-        message_box mb = new message_box() { Margin = new Thickness(20) };
+        message_box mb = new message_box();
         public e_type e { get; set; }
         public string title { get; set; }
         public string text { get; set; }
@@ -22,7 +22,9 @@ namespace skeleton
 
         public Action<string> reply { get; set; }
 
-        public UIElement z_ui => mb;
+        public FrameworkElement z_ui => mb;
+
+        public e_size size => e_size.s2_phone;
 
         public enum e_type
         {
@@ -52,7 +54,7 @@ namespace skeleton
         }
         public void start(api api2)
         {
-            mb.txt_message.Text = text;
+            mb.txt_message.text = text;
             if ((option?.Length ?? 0) == 0)
                 option = new string[] { "متوجه شدم" };
             ObservableCollection<string> l = new ObservableCollection<string>(option);

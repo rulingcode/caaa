@@ -6,7 +6,6 @@
              xmlns:local="clr-namespace:skeleton.home"
              xmlns:more="clr-namespace:skeleton.more_controls"
              d:Width="300"
-             Padding="10"
              mc:Ignorable="d">
 
     <StackPanel>

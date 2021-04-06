@@ -5,15 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="sk" xmlns:more_controls="clr-namespace:skeleton.more_controls"
       mc:Ignorable="d" 
+      VerticalAlignment="Top"
               d:DesignWidth="400">
     <Grid.RowDefinitions>
         <RowDefinition></RowDefinition>
         <RowDefinition></RowDefinition>
     </Grid.RowDefinitions>
-    <more_controls:text_block Text="عنوان" x:Name="lbl_title" Padding="10,10,10,5"/>
+    <more_controls:text_block text="عنوان" x:Name="lbl_title" Padding="10,10,10,5"/>
     <Border Grid.Row="1" BorderThickness="2" 
                 BorderBrush="SkyBlue"
-                CornerRadius="10"
+                CornerRadius="3"
+            Padding="1"
                 Name="border">
         <d:TextBox BorderThickness="0" />
     </Border>

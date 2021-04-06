@@ -9,9 +9,11 @@ namespace skeleton
 {
     public interface page
     {
-        UIElement z_ui { get; }
+        FrameworkElement z_ui { get; }
         void focus();
         void start(api api);
+        e_size size { get; }
+        string title { get; }
     }
     public interface page<T> : page
     {

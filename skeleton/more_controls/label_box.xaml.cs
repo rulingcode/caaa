@@ -26,7 +26,7 @@ namespace skeleton.more_controls
         {
             InitializeComponent();
         }
-        public string title { get => (string)lbl_title.Text; set => lbl_title.Text = value; }
+        public string title { get => (string)lbl_title.text; set => lbl_title.text = value; }
         public FlowDirection title_direction { get => lbl_title.FlowDirection; set => lbl_title.FlowDirection = value; }
         public UIElement child { get => border.Child; set => border.Child = value; }
     }

@@ -19,13 +19,32 @@ namespace skeleton
         SolidColorBrush color = new SolidColorBrush(Color.FromArgb(70, 0, 0, 0));
         public api(page page)
         {
+            api_ui.heder.text = page.title;
+            set(page);
             stack.Children.Add(api_ui);
             main_page = page;
             api_ui.stage.Children.Add(page.z_ui);
             page.start(this);
         }
+        void set(page page)
+        {
+            switch (page.size)
+            {
+                case e_size.s1_menu:
+                    page.z_ui.MinWidth = 180;
+                    break;
+                case e_size.s2_phone:
+                    page.z_ui.Width = 300;
+                    break;
+                case e_size.s3_tablet:
+                    break;
+                case e_size.s4_desktop:
+                    break;
+            }
+        }
         public async Task<T> side<T>(page<T> page)
         {
+            set(page);
             TaskCompletionSource<T> rt = new TaskCompletionSource<T>();
             page.reply = rt.SetResult;
             api api = new api(page);
@@ -38,6 +57,7 @@ namespace skeleton
         }
         public async Task<T> dialog<T>(page<T> page, bool background = false)
         {
+            set(page);
             TaskCompletionSource<T> rt = new TaskCompletionSource<T>();
             page.reply = rt.SetResult;
             if (borders.Count == 0)

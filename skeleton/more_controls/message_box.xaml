@@ -18,10 +18,10 @@
         </ListBox>
     </Border>
     <Border BorderBrush="DodgerBlue" BorderThickness="2" 
-            MinWidth="300" 
-            CornerRadius="2,10,2,2"
+            MinWidth="200" 
+            CornerRadius="2"
             Background="LightBlue" Padding="12">
-        <local:text_block Text="تست" 
+        <local:text_block text="تست" 
                    VerticalAlignment="Center"
                    x:Name="txt_message"></local:text_block>
     </Border>

@@ -18,12 +18,15 @@ namespace skeleton.home
     public partial class p_user_selector : Border, page
     {
         api api2;
+        ListBox lst_users;
         public p_user_selector()
         {
             InitializeComponent();
+            lst_users = (ListBox)lst.child;
         }
-        public UIElement z_ui => this;
-        public string title => "لیست کاربران ثبت شده";
+        public FrameworkElement z_ui => this;
+        public string title => "انتخاب کاربر";
+        public e_size size => e_size.s2_phone;
         public void focus()
         {
             lst_users.SelectedIndex = 0;
