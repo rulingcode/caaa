@@ -24,6 +24,6 @@ namespace layer_3.c
             lite.Checkpoint();
         }
         public c_db<T> general<T>() where T : m_id => new db<T>(lite.GetCollection<T>("general_" + typeof(T).Name));
-        public c_db<T> a_sync<T>(string xid, string userid) where T : m_sync => new db<T>(lite.GetCollection<T>("sync_" + xid + "_" + userid));
+        public c_db<m_sync> sync(string xid, string userid) => new db<m_sync>(lite.GetCollection<m_sync>("sync_" + xid + "_" + userid));
     }
 }

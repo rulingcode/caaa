@@ -21,9 +21,5 @@ namespace skeleton
         {
             developer_factory = factory;
         }
-        public void set_user(string userid)
-        {
-
-        }
     }
 }

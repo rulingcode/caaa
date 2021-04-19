@@ -27,5 +27,6 @@ namespace layer_3
         internal static MongoClient mongo;
 
         internal static s_db<sync_center> s_device_user;
+        internal static c.sync_factory c_sync;
     }
 }

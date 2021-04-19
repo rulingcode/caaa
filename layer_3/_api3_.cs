@@ -26,7 +26,10 @@ namespace layer_3
                 a.s_device_user = s_db.general_x<sync_center>();
             }
             else
+            {
                 a.c_db = new c.db_factory(appid);
+                a.c_sync = new c.sync_factory();
+            }
 
             a.c_notify = new c.notify();
             a.s_key = new key();
@@ -47,5 +50,6 @@ namespace layer_3
         public async void s_notify(string userid) => await notify.send(userid);
         public s_get_key z_get_key { get; set; }
         public y_before z_middle_y { get; set; }
+        public c_sync_factory c_sync => a.c_sync;
     }
 }

@@ -29,6 +29,15 @@ namespace skeleton.home
             list.Add(add_user);
             lst_users.ItemsSource = list;
             lst_users.DisplayMemberPath = nameof(m.user.text);
+            lst_users.SelectionChanged += Lst_users_SelectionChanged;
+        }
+        private void Lst_users_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var dv = lst_users.SelectedItem as m.user;
+            if (dv == add_user)
+                a.c_menu.set_user(null);
+            else
+                a.c_menu.set_user(dv.id);
         }
         public FrameworkElement z_ui => this;
         public string title => "انتخاب کاربر";

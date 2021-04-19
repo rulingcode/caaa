@@ -53,13 +53,17 @@ namespace layer_3.c
             y_sync y = new() { a_time = time, a_xid = rsv.xid };
             var o = await y.run(a.api3.c_run(rsv.userid));
             if (o.deleted != null && o.deleted.Length != 0)
+            {
                 await db.delete_many(i => o.deleted.Contains(i.id));
+                await a.c_sync.delete(rsv.xid, rsv.userid, o.deleted);
+            }
             if (o.updated != null && o.updated.Length != 0)
             {
-                var items = o.updated.Select(i => JsonConvert.DeserializeObject(i, type.type)).ToArray();
-                var db2 = a.c_db.a_sync<m_sync>(rsv.xid, rsv.userid);
-                foreach (m_sync item in items)
+                var items = o.updated.Select(i => JsonConvert.DeserializeObject(i, type.type) as m_sync).ToArray();
+                var db2 = a.c_db.sync(rsv.xid, rsv.userid);
+                foreach (var item in items)
                     await db2.upsert(item);
+                await a.c_sync.upsert(rsv.xid, rsv.userid, items);
             }
             if (o.time != time)
                 await db.upsert(new m.c_history() { id = id, time = o.time });
@@ -79,7 +83,7 @@ namespace layer_3.c
             var o = await y.run(a.run_x);
 
             if (o.deleted != null && o.deleted.Length != 0)
-                await db.general_x<m_sync>().delete_many(o.deleted);
+                await db.general_x<m_id>().delete_many(o.deleted);
 
             if (o.updated != null && o.updated.Length != 0)
             {

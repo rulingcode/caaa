@@ -19,5 +19,6 @@ namespace skeleton
         internal static api api;
         internal static api user_selector;
         internal static c_app c_app;
+        internal static c_menu c_menu;
     }
 }
