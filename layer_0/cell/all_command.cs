@@ -13,6 +13,6 @@ namespace layer_0.cell
         public const string address_updated = nameof(address_updated);
         public const string device_updated = nameof(device_updated);
         public const string developer_app = nameof(developer_app);
-        public const string x_file = nameof(x_file);
+        public const string x_app = nameof(x_app);
     }
 }

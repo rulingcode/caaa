@@ -34,7 +34,7 @@ namespace skeleton.home
         private void Lst_users_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var dv = lst_users.SelectedItem as m.user;
-            if (dv == add_user)
+            if (dv == add_user || dv == null)
                 a.c_menu.set_user(null);
             else
                 a.c_menu.set_user(dv.id);

@@ -78,6 +78,7 @@ namespace skeleton
         private void go()
         {
             n = 0;
+            a.c_menu = new c_menu();
             a.main_panel = new main_panel();
             a.window.Content = a.main_panel;
         }

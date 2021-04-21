@@ -11,7 +11,7 @@ namespace layer_0.x_app
     public class sync_app : m_sync
     {
         public override e_permission z_permission => e_permission.u;
-        public override string z_xid => "x_app";
+        public override string z_xid => all_command.x_app;
         public string name { get; set; }
         public string description { get; set; }
         public DateTime last_update { get; set; }

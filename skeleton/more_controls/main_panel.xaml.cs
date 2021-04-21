@@ -38,6 +38,8 @@ namespace skeleton.more_controls
         }
         public void set(string[] apps, int app)
         {
+            if (app == -1)
+                app = 0;
             for (int i = 0; i < max; i++)
             {
                 icon icon = ((icon)v_stack.Children[i]);

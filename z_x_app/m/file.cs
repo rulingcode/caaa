@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace layer_0.x_app
+namespace z_x_app.m
 {
-    public abstract class z_y<T> : y<T> where T : o_base, new()
+    class file : m_id
     {
-        public sealed override string z_xid => "x_app";
+        public byte[] data { get; set; }
     }
 }

@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace layer_0.x_app
 {
-    public class y_search : z_y<y_search.o>
+    public class y_search : y<y_search.o>
     {
+        public override string z_xid => all_command.x_app;
         public override string z_yid => nameof(y_search);
         public string a_name { get; set; }
         public class o : o_base
