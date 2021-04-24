@@ -7,16 +7,11 @@ using System.Threading.Tasks;
 
 namespace layer_0.x_app
 {
-    public class y_upsert_menu : z_y<y_upsert_menu.o>
+    public class y_delete_setup : y<y_delete_setup.o>
     {
-        public override string z_yid => nameof(y_upsert_menu);
+        public override string z_xid => all_command.x_app;
+        public override string z_yid => nameof(y_delete_setup);
         public string a_appid { get; set; }
-        public e_action a_action { get; set; }
         public class o : o_base { }
-        public enum e_action
-        {
-            add,
-            remove
-        }
     }
 }
