@@ -8,14 +8,24 @@ using System.Windows.Media;
 
 namespace layer_x
 {
+    delegate Task<m_sync> create_sync(string userid, string syncid);
     public static class x
     {
+        static create_sync create_sync = default;
         public static s_db_factory db => a.api3.s_db;
         public static c_run run_x { get; private set; }
         public static c_run run_null { get; private set; }
         public static void add_y<T>() where T : y, new() => a.api3.s_add_y<T>();
-        public static void z_create<T>(Window window) where T : m_sync, new()
+        public static async void sync(string userid, string syncid)
         {
+            var dv = await create_sync(userid, syncid);
+            a.api3.c_sync.create<m_sync>(userid);
+        }
+        public static void z_create<T>(s_create_sync<T> create_sync, Window window) where T : m_sync, new()
+        {
+            Task<T> met(string userid, string syncid) => create_sync(userid, syncid);
+            create_sync = met;
+
             T dv = new T();
             a.xid = dv.z_xid;
             a.api3 = api3_factory.create<T>(a.xid);

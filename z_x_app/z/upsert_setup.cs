@@ -17,37 +17,15 @@ namespace z_x_app.z
                 return;
             }
             var db = z_db.user<m.setup>(z_userid);
-            if (a_degree == e_degree.non)
-            {
-                await db.delete(a_appid);
-                await z_db.user<sync_app>(z_userid).delete(a_appid);
-            }
             var setup = await db.get(z_userid);
-            switch (a_degree)
+            if (setup == null) setup = new m.setup()
             {
-                case e_degree.non:
-                    {
-
-                    }
-                    break;
-                case e_degree.high:
-                    {
-
-                    }
-                    break;
-                case e_degree.medium:
-                    {
-
-                    }
-                    break;
-                case e_degree.low:
-                    {
-
-                    }
-                    break;
-            }
+                id = a_appid
+            };
+            setup.degree = a_degree;
             await db.upsert(setup);
-
+            await a.update(z_userid, a_appid);
+            reply(new o());
         }
     }
 }

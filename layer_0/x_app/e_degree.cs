@@ -4,7 +4,6 @@
     {
         high,
         medium,
-        low,
-        non
+        low
     }
 }

@@ -26,9 +26,13 @@ namespace z_x_user
         public MainWindow()
         {
             InitializeComponent();
-            x.z_create<sync_user>(this);
+            x.z_create(create_sync, this);
             x.add_y<z.upsert_contact>();
             x.add_y<z.upsert_info>();
+        }
+        private Task<sync_user> create_sync(string userid, string syncid)
+        {
+            throw new NotImplementedException();
         }
     }
 }
